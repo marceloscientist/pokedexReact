@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<body>
+
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="leftMenu">
+    <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <div class="w3-bar w3-light-grey">
+      <a href="#" class="w3-bar-item w3-button"> <img src="./imgs/pokeball.png" alt="Pokeball" width="20rem"></a>
+      <input type="text" class="w3-bar-item w3-input" placeholder="Search..">
+      <a href="#" class="w3-bar-item w3-button w3-green">Go</a>
+    </div>
+  </div>
+
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+    <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <div class="w3-card-4">
+
+      <header class="w3-container w3-light-grey">
+        <h3>Wishing List</h3>
+      </header>
+
+      <div class="w3-container">
+        <hr>
+        <img src="./imgs/img_avatar3.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
+        <p>President/CEO at Mighty Schools...</p>
+        <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+        <hr>
+        <img src="./imgs/img_avatar3.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
+        <p>President/CEO at Mighty Schools...</p>
+        <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+        <hr>
+        <img src="./imgs/img_avatar3.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
+        <p>President/CEO at Mighty Schools...</p>
+        <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+        <hr>
+      </div>
+      <button class="w3-button w3-block w3-dark-grey">Shop Now</button>
+    </div>
+  </div>
+
+  <div class="w3-teal">
+    <button class="w3-button w3-teal w3-xlarge w3-left" onclick="openLeftMenu()">
+      <img src="./imgs/search.jpg" width="40rem" alt="">
+    </button>
+    <a class="w3-button w3-teal w3-xlarge w3-center" style="text-align:center">
+      <img src="./imgs/pokeball.png" alt="Pokeball" width="40rem">
+    </a>
+    <button class="w3-button w3-teal w3-xlarge w3-right" onclick="openRightMenu()"><i
+        class="fa fa-shopping-cart"></i></button>
+
+  </div>
+
+  <div class="w3-container">
+    <div class="w3-container">
+    </div>
+    <p>In this example, we demonstrate how to use two side navigations.</p>
+    <div class="w3-row">
+      <div class="w3-third w3-center">
+        <h3>MON</h3>
+        <img src="./imgs/img_weather_sun.jpg" alt="sun">
+      </div>
+      <div class="w3-third w3-center">
+        <h3>TUE</h3>
+        <img src="./imgs/img_weather_cloud.jpg" alt="cloud">
+      </div>
+      <div class="w3-third w3-center w3-margin-bottom">
+        <h3>WED</h3>
+        <img src="./imgs/img_weather_clouds.jpg" alt="clouds">
+      </div>
+    </div>
+    <button id='generate-pokemon'>Download</button>
+    <ul id="valt">
+
+    </ul>
+  </div>
+
+  <script>
+    function openLeftMenu() {
+      document.getElementById("leftMenu").style.display = "block";
+    }
+
+    function closeLeftMenu() {
+      document.getElementById("leftMenu").style.display = "none";
+    }
+
+    function openRightMenu() {
+      document.getElementById("rightMenu").style.display = "block";
+    }
+
+    function closeRightMenu() {
+      document.getElementById("rightMenu").style.display = "none";
+    }
+
+
+    const url = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+    const ul = document.getElementById('valt')
+    const pokemonData = () => {
+      fetch(url)
+        .then(response => response.json())
+        .then((data) => {
+          let pokemon = data.results;
+          return pokemon.map((poke) => {
+            let li = document.createElement('li'), img = document.createElement('img'), span = document.createElement('span');
+
+            let urlImage = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
+            //Example: https://pokeapi.co/api/v2/pokemon/1/"
+            fetch(urlImage)
+              .then(response => response.json())
+              .then(pokeData => {
+                console.log(pokeData)
+              })
+
+            span.innerHTML = `${poke.name}`;
+            li.appendChild(img);
+            li.appendChild(span);
+            ul.appendChild(li);
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    pokemon = pokemonData()
+    console.log(pokemon)
+
+  </script>
+
+</body>
+
+</html>
