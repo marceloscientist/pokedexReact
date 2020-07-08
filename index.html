@@ -75,7 +75,6 @@
         <img src="./imgs/img_weather_clouds.jpg" alt="clouds">
       </div>
     </div>
-    <button id='generate-pokemon'>Download</button>
     <ul id="valt">
 
     </ul>
@@ -107,18 +106,10 @@
         .then((data) => {
           let pokemon = data.results;
           return pokemon.map((poke) => {
-            let li = document.createElement('li'), img = document.createElement('img'), span = document.createElement('span');
-
-            let urlImage = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
-            //Example: https://pokeapi.co/api/v2/pokemon/1/"
-            fetch(urlImage)
-              .then(response => response.json())
-              .then(pokeData => {
-                console.log(pokeData)
-              })
-
+            let li = document.createElement('li'), /*img = document.createElement('img'), */span = document.createElement('span');
+//            let urlImage = pokemon.url 
             span.innerHTML = `${poke.name}`;
-            li.appendChild(img);
+//            li.appendChild(img);
             li.appendChild(span);
             ul.appendChild(li);
           })
