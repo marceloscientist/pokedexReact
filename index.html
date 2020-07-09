@@ -28,20 +28,20 @@
 
       <div class="w3-container">
         <hr>
-        <img src="./imgs/img_avatar3.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
-        <p>President/CEO at Mighty Schools...</p>
-        <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+        <img src="./imgs/0.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
+        <p>name: </p>
+        <button class="w3-button w3-block w3-orange">- Delete</button>
         <hr>
-        <img src="./imgs/img_avatar3.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
-        <p>President/CEO at Mighty Schools...</p>
-        <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+        <img src="./imgs/1.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
+        <p>name: </p>
+        <button class="w3-button w3-block w3-orange">- Delete</button>
         <hr>
-        <img src="./imgs/img_avatar3.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
-        <p>President/CEO at Mighty Schools...</p>
-        <button class="w3-button w3-block w3-dark-grey">+ Connect</button>
+        <img src="./imgs/2.png" alt="Avatar" style="width:3em" class="w3-left w3-circle">
+        <p>name: </p>
+        <button class="w3-button w3-block w3-orange">- Delete</button>
         <hr>
       </div>
-      <button class="w3-button w3-block w3-dark-grey">Shop Now</button>
+      <button class="w3-button w3-block w3-blue">Shop Now</button>
     </div>
   </div>
 
@@ -60,19 +60,19 @@
   <div class="w3-container">
     <div class="w3-container">
     </div>
-    <p>In this example, we demonstrate how to use two side navigations.</p>
+    <p>We'll have a e-commerce like page right here, made of React, consuming a Pokemon API.</p>
     <div class="w3-row">
       <div class="w3-third w3-center">
         <h3>MON</h3>
-        <img src="./imgs/img_weather_sun.jpg" alt="sun">
+        <img src="./imgs/0.png" alt="0">
       </div>
       <div class="w3-third w3-center">
         <h3>TUE</h3>
-        <img src="./imgs/img_weather_cloud.jpg" alt="cloud">
+        <img src="./imgs/1.png" alt="1">
       </div>
       <div class="w3-third w3-center w3-margin-bottom">
         <h3>WED</h3>
-        <img src="./imgs/img_weather_clouds.jpg" alt="clouds">
+        <img src="./imgs/2.png" alt="2">
       </div>
     </div>
     <ul id="valt">
@@ -98,28 +98,7 @@
     }
 
 
-    const url = 'https://pokeapi.co/api/v2/pokemon?limit=151';
-    const ul = document.getElementById('valt')
-    const pokemonData = () => {
-      fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-          let pokemon = data.results;
-          return pokemon.map((poke) => {
-            let li = document.createElement('li'), /*img = document.createElement('img'), */span = document.createElement('span');
-//            let urlImage = pokemon.url 
-            span.innerHTML = `${poke.name}`;
-//            li.appendChild(img);
-            li.appendChild(span);
-            ul.appendChild(li);
-          })
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    pokemon = pokemonData()
-    console.log(pokemon)
+   
 
   </script>
 
